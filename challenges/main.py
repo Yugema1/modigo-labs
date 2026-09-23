@@ -1,23 +1,11 @@
-def group_by_grade(students):
-    grouped_grades = {}
-    for student in students:
-        name = student['name']
-        score = student['score']
-        if score < 60:
-            grade = 'F'
-        elif score < 70:
-            grade = 'D'
-        elif score < 80:
-            grade = 'C'
-        elif score < 90:
-            grade = 'B'
-        else:
-            grade = 'A'
-
-        if grade not in grouped_grades:
-            grouped_grades[grade] = [name]
-        else:
-            grouped_grades[grade].append(name)
-    return grouped_grades
-
-print(group_by_grade([{"name": "Ada", "score": 95}, {"name": "Bola", "score": 82}]))
+def top_scorers(results):
+    # TODO: find the highest score, collect all players who achieved it,
+    highest_score = max(score for name, score in results)
+    top_scorers = []
+    for players in results:
+        name, score = players
+        if score == highest_score:
+            top_scorers.append(name)
+    # and return their names as a sorted tuple
+    return tuple(sorted(top_scorers))
+print(top_scorers([("Zara", 50), ("Ade", 50), ("Bola", 40)]))
